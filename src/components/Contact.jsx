@@ -52,24 +52,21 @@ const Contact = () => {
                 errors.reasonOfContact}
             </p>
             <label>How did you hear about us?</label>
-            <select {...handleChange("select")} onChange={handleChange}>
-              <option value="">Null</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select>
-            {errors.how && <p>{errors.how.message}</p>}
-            <button
-              type="submit"
-              onClick={() =>
-                setItems([values.firstName, values.reasonOfContact])
-              }
-            >
-              submit
-            </button>
-          </form>
-        )}
-      </Formik>
-      <ContactDetails items={items} />
+        <select
+          {...handleChange("select")}
+          onChange={handleChange}
+          >
+          <option value="">Null</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        {errors.how && <p>{errors.how.message}</p>}
+            <button type="submit">submit</button>
+    
+
+        </form>)
+         }
+        </Formik>
     </div>
   );
 };
