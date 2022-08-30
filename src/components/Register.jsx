@@ -1,6 +1,11 @@
 import { Formik } from "formik";
+import { useState } from "react";
 import * as Yup from "yup";
+import Contact from "./Contact";
+
+
 const Register = () => {
+  const [submit , setSubmit] = useState("")
   const schema = Yup.object().shape({
     username: Yup.string()
       .required("Username field is required")
@@ -21,6 +26,7 @@ const Register = () => {
       >
         {({ handleChange, handleBlur, values, errors, touched }) => (
           <form noValidate>
+            
             <input
               type="username"
               name="username"
@@ -30,6 +36,7 @@ const Register = () => {
               value={values.username}
             />
             <p>{errors.username && touched.username && errors.username}</p>
+            
             <input
               type="password"
               name="password"
@@ -53,10 +60,13 @@ const Register = () => {
                 touched.confirmPassword &&
                 errors.confirmPassword}
             </p>
-            <input type="checkbox" name="checkbox" id="" />
+            <input type="checkbox" name="checkbox" id="" onClick={()=>setSubmit(values.username)}/>
+           
+            <h1 >hello {submit}</h1>
           </form>
         )}
       </Formik>
+      
     </div>
   );
 };
